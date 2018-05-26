@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2018-05-26T09:57:15.136Z</updated>
+  <updated>2018-05-25T17:15:59.236Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,24 +15,6 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
-  
-  <entry>
-    <title>更新blog测试</title>
-    <link href="http://yoursite.com/2018/05/26/%E6%9B%B4%E6%96%B0blog%E6%B5%8B%E8%AF%95/"/>
-    <id>http://yoursite.com/2018/05/26/更新blog测试/</id>
-    <published>2018-05-26T09:57:05.000Z</published>
-    <updated>2018-05-26T09:57:15.136Z</updated>
-    
-    <summary type="html">
-    
-    </summary>
-    
-      <category term="blog" scheme="http://yoursite.com/categories/blog/"/>
-    
-    
-      <category term="更新blog测试" scheme="http://yoursite.com/tags/%E6%9B%B4%E6%96%B0blog%E6%B5%8B%E8%AF%95/"/>
-    
-  </entry>
   
   <entry>
     <title>移动端rem布局</title>
