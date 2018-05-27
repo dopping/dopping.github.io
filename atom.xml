@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2018-05-26T14:22:59.168Z</updated>
+  <updated>2018-05-27T14:52:16.278Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>ECMAScript 6 入门</title>
+    <link href="http://yoursite.com/2018/05/27/ECMAScript-6-%E5%85%A5%E9%97%A8/"/>
+    <id>http://yoursite.com/2018/05/27/ECMAScript-6-入门/</id>
+    <published>2018-05-27T14:09:15.000Z</published>
+    <updated>2018-05-27T14:52:16.278Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="ECMAScript-6-入门"><a href="#ECMAScript-6-入门" class="headerlink" title="ECMAScript 6 入门"></a>ECMAScript 6 入门</h1><p>ECMAScript 6 在接下来的一段时间内将成为 ECMAScript的一个标准。这个标准预计在今年的时候就会被签署，不管在Github,还是在很多社区，javascript爱好者已经早已开始拥抱变化。</p><h2 id="es6入门前言-babel转码"><a href="#es6入门前言-babel转码" class="headerlink" title="es6入门前言-babel转码"></a>es6入门前言-babel转码</h2><p>babel是一个广泛使用的转码器，可以将es6代码转化为es5代码。</p><h3 id="一、配置文件-babelrc"><a href="#一、配置文件-babelrc" class="headerlink" title="一、配置文件.babelrc"></a>一、配置文件.babelrc</h3><p>Babel的配置文件是<code>.babelrc</code>，存放在项目的根目录下。使用Babel的第一步，就是配置这个文件。</p><p>该文件用来设置转码规则和插件，基本格式如下。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;presets&quot;: [],</span><br><span class="line">  &quot;plugins&quot;: []</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p><code>presets</code>字段设定转码规则，以下为安装规则集。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"># ES2015转码规则</span><br><span class="line">$ npm install --save-dev babel-preset-es2015</span><br><span class="line"></span><br><span class="line"># react转码规则</span><br><span class="line">$ npm install --save-dev babel-preset-react</span><br><span class="line"></span><br><span class="line"># ES7不同阶段语法提案的转码规则（共有4个阶段），选装一个</span><br><span class="line">$ npm install --save-dev babel-preset-stage-0</span><br><span class="line">$ npm install --save-dev babel-preset-stage-1</span><br><span class="line">$ npm install --save-dev babel-preset-stage-2</span><br><span class="line">$ npm install --save-dev babel-preset-stage-3</span><br></pre></td></tr></table></figure><h4 id="将这些规则加入到-babelrc中。"><a href="#将这些规则加入到-babelrc中。" class="headerlink" title="将这些规则加入到.babelrc中。"></a>将这些规则加入到.babelrc中。</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&#123;</span><br><span class="line">  &quot;presets&quot;: [</span><br><span class="line">    &quot;es2015&quot;,</span><br><span class="line">    &quot;react&quot;,</span><br><span class="line">    &quot;stage-2&quot;</span><br><span class="line">  ],</span><br><span class="line">  &quot;plugins&quot;: []</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h3 id="二、命令行转化码-babel-cli"><a href="#二、命令行转化码-babel-cli" class="headerlink" title="二、命令行转化码 babel-cli"></a>二、命令行转化码 babel-cli</h3><p>Babel提供<code>babel-cli</code>工具，用于命令行转码。</p><p>由于全局安装满足不了不同项目对不同版本babel的需要，这里安装到项目中</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># 安装</span><br><span class="line">$ npm install --save-dev babel-cli</span><br></pre></td></tr></table></figure><p>然后，改写<code>package.json</code>。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  // ...</span><br><span class="line">  &quot;devDependencies&quot;: &#123;</span><br><span class="line">    &quot;babel-cli&quot;: &quot;^6.0.0&quot;</span><br><span class="line">  &#125;,</span><br><span class="line">  &quot;scripts&quot;: &#123;</span><br><span class="line">  //运行npm run build 进行转码</span><br><span class="line">  // src为编写es6代码的文件夹 lib为babel转码后存放的文件夹</span><br><span class="line">    &quot;build&quot;: &quot;babel src -d lib&quot;</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>转码的时候，就执行下面的命令。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm run build</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;ECMAScript-6-入门&quot;&gt;&lt;a href=&quot;#ECMAScript-6-入门&quot; class=&quot;headerlink&quot; title=&quot;ECMAScript 6 入门&quot;&gt;&lt;/a&gt;ECMAScript 6 入门&lt;/h1&gt;&lt;p&gt;ECMAScript 6 在接下来的
+      
+    
+    </summary>
+    
+      <category term="javascript" scheme="http://yoursite.com/categories/javascript/"/>
+    
+    
+      <category term="ECMAScript 6 入门" scheme="http://yoursite.com/tags/ECMAScript-6-%E5%85%A5%E9%97%A8/"/>
+    
+  </entry>
   
   <entry>
     <title>hexo的next主题个性化配置教程</title>
